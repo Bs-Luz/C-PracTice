@@ -234,28 +234,29 @@ using namespace std;
 //}
 
 //별찍기
-int main()
-{
-	/*int b;
-	cin >> b;*/
-	
-	for (int i = 0; i < 5; i++)
-		
-		{
-		
-			for (int a = 0; a <= i; a++)
-			{
-				
-				cout << "*";
-			}
-			
-			cout << endl;
 
-			}
-	
-		
-	return 0;
-}
+//int main()
+//{
+//	/*int b;
+//	cin >> b;*/
+//	
+//	for (int i = 0; i < 5; i++)
+//		
+//		{
+//		
+//			for (int a = 0; a <= i; a++)
+//			{
+//				
+//				cout << "*";
+//			}
+//			
+//			cout << endl;
+//
+//			}
+//	
+//		
+//	return 0;
+//}
 //int main()
 //{
 //	int a = 0;
@@ -1088,3 +1089,211 @@ int main()
 //
 //	return 0;
 //}
+
+//포인터
+
+// 포인터를 이용해 A,B값을 스왑하라
+
+//void Swap(int *A, int *B)
+//{
+//	int C = 0;
+//
+//	C = *A;
+//	*A = *B;
+//	*B = C;
+//
+//	return ;
+//}
+//
+//int main()
+//{
+//	int I = 3;
+//	int J = 10;
+//	int *PtrA = &I;
+//	int *PtrB = &J;
+//	/*cout << "A: " << A << endl;
+//	cout << "B: " << PtrB << endl;
+//	cout << "B: " << *PtrB << endl;
+//	*PtrB *= 10;
+//	cout << "B: " << *PtrB << endl;
+//	cout << "A: " << A << endl;*/
+//	Swap(PtrA,PtrB);
+//	cout << I << J;
+//}
+
+//실습10
+//배열의 최소값 구하기
+
+//int Findmin(int *Array ,int Size)
+//{
+//	int Min = Array[0];
+//	
+//	for (int i = 0; i < 5; i++)
+//	{
+//		if (Array[i] < Min)
+//		{
+//			Min = Array[i];
+//		}
+//
+//	}
+//	/*if (Array[0] < Array[1])
+//	{
+//		Min = Array[0];
+//
+//	}
+//	if (Array[1] < Array[2])
+//	{
+//		Min = Array[1];
+//
+//	}
+//	if (Array[2] < Array[3])
+//	{
+//		Min = Array[2];
+//
+//	}
+//	if (Array[3] < Array[4])
+//	{
+//		Min = Array[3];
+//
+//	}
+//	if (Array[4] < Array[5])
+//	{
+//		Min = Array[4];
+//
+//	}
+//	if (Array[5] < Array[0])
+//	{
+//		Min = Array[5];
+//	}	*/
+//	
+//	cout << Min << endl;
+//
+//	return Min;
+//}
+//
+//int main()
+//{
+//	int Array[5] = { 36, 41, 50, 23, 6 };
+//	int* PtrTemp = Array;
+//	int Size = 0;
+//
+//	cout << Findmin(Array,5) << endl;
+//
+//}
+
+//실습 11
+//문자열을 역순으로 반환하는 함수 구현
+
+//void Swap(char& A, char& B)
+//{
+//	char C = A;
+//	A = B;
+//	B = C;
+//}
+//
+//char* Reverse(char* PtrCharacter, int Size)
+//{
+//	//	int C = 0;
+//	//
+//	//	C = *A;
+//	//	*A = *B;
+//	//	*B = C;
+//	char Swap;
+//	char Back = PtrCharacter[0];
+//	char* PtrBack = &Back;
+//
+//
+//	for (int i = 0; i < Size/2; i++)
+//	{
+//		
+//		Swap = PtrCharacter[i];
+//		PtrCharacter[i] = PtrCharacter[Size-1-i];
+//		PtrCharacter[Size - 1 - i] = Swap;
+//		//cout << Back <<endl;
+//		//Back = PtrBack[i];
+//		/*if (PtrBack[i] < Back)
+//		{
+//			Back = PtrBack[i];
+//		}*/
+//		//cout << "vv" << PtrCharacter << endl;
+//	}cout << PtrCharacter << endl;
+//	
+//	return PtrCharacter;
+//}
+//
+//int main()
+//{
+//	char A[5] = { 'A','B','C','D','E'};
+//	char* PtrCharacter = A;
+//	int Size = 0;
+//	cout << A << endl;
+//	
+//	cout << Reverse(PtrCharacter,5) << endl;
+//
+//	return 0;
+//}
+
+//실습 12 - 데미지 계산기
+//함수 호출 끝나고 체력이 닳도록
+//데미지-방어력 = 체력, 그리고 DodgeRate로 공격을 회피
+
+
+void TakeDamage(float *Health, float *Damage, float *Armor, float *DodgeRate)
+{
+	
+	srand(time(NULL)); //한번만 호출
+	int Rand = rand();//임의의 큰 수 반환
+	double Pick = (double)Rand / RAND_MAX;
+
+	int N = 0;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+
+		if (Pick < *DodgeRate)
+		{
+			
+		}
+		else if (*Damage < *Armor)
+		{
+
+		}
+		else
+		{
+			*Health -= *Damage - *Armor;
+		}
+		cout << *Health << endl;
+	}
+	cout << *Health << endl;
+	return;
+}
+
+int main()
+{
+
+	float Health, Damage, Armor, DodgeRate;
+	Health = 1000;
+	Damage = 50;
+	Armor = 30;
+	DodgeRate = 0.4;
+	float* H = &Health;
+	float* D = &Damage;
+	float* A = &Armor;
+	float* R = &DodgeRate;
+
+	TakeDamage(H,D,A,R);
+	cout << *H << endl;
+
+	return 0;
+}
+
+int main()
+{
+	int A = 10000;
+	int B = 100;
+
+	int* PtrA = &A;
+	int* PtrB = &B;
+}
